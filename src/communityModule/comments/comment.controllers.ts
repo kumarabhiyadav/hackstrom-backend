@@ -13,7 +13,7 @@ export const createComment = async (req: any, res: Response) => {
     if (insertedComment) {
       let newComment = await CommentModel.findById(
         insertedComment._id
-      ).populate("user");
+      ).populate("user", { name: 1 });
       res.status(201).json({
         success: true,
         message: "Comment has been added",
@@ -41,7 +41,6 @@ export const fetchComment = async (req: any, res: Response) => {
     let comments = await CommentModel.find({
       isDeleted: false,
       post: post,
-      
     })
       .populate("user")
       .sort({ createdAt: -1 });

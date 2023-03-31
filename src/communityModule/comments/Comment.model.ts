@@ -1,6 +1,6 @@
 import { getModelForClass, prop, Ref } from "@typegoose/typegoose";
-import { Post } from "../posts/Post.model";
-import { User } from "../auth/User.model";
+import { User } from "../../auth/User.model";
+import { Post } from "../posts.model";
 
 export class Comment {
   @prop({ trim: true })
