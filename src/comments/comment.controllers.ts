@@ -36,12 +36,12 @@ export const createComment = async (req: any, res: Response) => {
 };
 
 export const fetchComment = async (req: any, res: Response) => {
-  let { post, user } = req.body;
+  let { post } = req.body;
   try {
     let comments = await CommentModel.find({
       isDeleted: false,
       post: post,
-      user: user,
+      
     })
       .populate("user")
       .sort({ createdAt: -1 });
