@@ -26,7 +26,7 @@ export const login = async (req: any, res: Response) => {
 };
 
 export const signup = async (req: Request, res: Response) => {
-  const { email, password, phone, countryCode, role, userName } = req.body;
+  const { email, password, phone, countryCode, role, name } = req.body;
 
   let user = await UserModel.findOne({ email: email, phone: phone });
 
@@ -39,7 +39,7 @@ export const signup = async (req: Request, res: Response) => {
     const encpass = bcrypt.hashSync(password, 1);
 
     user = await UserModel.create({
-      userName,
+      name,
       email,
       password: encpass,
       countryCode,
@@ -75,7 +75,7 @@ export const fetchUsers = async (req: any, res: Response) => {
       isActive: true,
       isDeleted: false,
     },
-    { email: 1, userName: 1, role: 1 }
+    { email: 1, name: 1, role: 1 }
   );
 
   if (users) {
@@ -93,12 +93,12 @@ export const fetchUsers = async (req: any, res: Response) => {
 };
 
 export const updateUser = async (req: any, res: Response) => {
-  let { userId, email, username, role } = req.body;
+  let { userId, email, name, role } = req.body;
   let user = await UserModel.findByIdAndUpdate(
     userId,
     {
       email: email,
-      userName: username,
+      name: name,
       role: role,
     },
     { new: true, runValidators: true }

@@ -13,7 +13,7 @@ export class User {
 
 
   @prop({ trim: true })
-  userName: string;
+  name: string;
 
   @prop()
   phone: string;
