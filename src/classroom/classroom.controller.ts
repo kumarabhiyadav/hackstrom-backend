@@ -65,7 +65,7 @@ export const fetchClassroom = async (req: any, res: Response) => {
   }
 };
 
-export const deleteClass = async (req: any, res: Response) => {
+export const deleteClassroom = async (req: any, res: Response) => {
   let { classId } = req.body;
   try {
     let DeleteClass = await ClassroomModel.findByIdAndUpdate(classId, {
@@ -75,7 +75,7 @@ export const deleteClass = async (req: any, res: Response) => {
     if (DeleteClass) {
       res.status(201).json({
         success: true,
-        message: "delete Class",
+        message: "Class has been deleted successfully",
         result: DeleteClass,
       });
     } else {
