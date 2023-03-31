@@ -39,7 +39,7 @@ const login = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
 });
 exports.login = login;
 const signup = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { email, password, phone, countryCode, role, userName } = req.body;
+    const { email, password, phone, countryCode, role, name } = req.body;
     let user = yield User_model_1.UserModel.findOne({ email: email, phone: phone });
     if (user) {
         res.status(401).json({
@@ -50,7 +50,7 @@ const signup = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     else {
         const encpass = bcrypt_1.default.hashSync(password, 1);
         user = yield User_model_1.UserModel.create({
-            userName,
+            name,
             email,
             password: encpass,
             countryCode,
@@ -83,7 +83,7 @@ const fetchUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
     let users = yield User_model_1.UserModel.find({
         isActive: true,
         isDeleted: false,
-    }, { email: 1, userName: 1, role: 1 });
+    }, { email: 1, name: 1, role: 1 });
     if (users) {
         res.status(201).json({
             success: true,
@@ -100,10 +100,10 @@ const fetchUsers = (req, res) => __awaiter(void 0, void 0, void 0, function* () 
 });
 exports.fetchUsers = fetchUsers;
 const updateUser = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    let { userId, email, username, role } = req.body;
+    let { userId, email, name, role } = req.body;
     let user = yield User_model_1.UserModel.findByIdAndUpdate(userId, {
         email: email,
-        userName: username,
+        name: name,
         role: role,
     }, { new: true, runValidators: true });
     if (user) {

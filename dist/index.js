@@ -16,7 +16,7 @@ const app = (0, express_1.default)();
 const port = process.env.PORT;
 app.use((0, express_fileupload_1.default)({ useTempFiles: true }));
 app.use((0, cors_1.default)({
-    origin: '*'
+    origin: "*",
 }));
 app.use(express_1.default.json({ limit: "5000mb" }));
 cloudinary_1.default.v2.config({

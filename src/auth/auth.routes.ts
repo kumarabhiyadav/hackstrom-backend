@@ -9,7 +9,7 @@ export const AuthRoutes: Router = express.Router();
 AuthRoutes.post("/login", login);
 AuthRoutes.post("/signup", signup);
 AuthRoutes.post("/upload", upload);
-AuthRoutes.post("/fetchUsers", verifyJwtToken, fetchUsers);
+AuthRoutes.post("/fetchUsers", fetchUsers);
 AuthRoutes.post("/updateUser", verifyJwtToken, updateUser);
 AuthRoutes.post("/deleteUser", verifyJwtToken, deleteUser);
 

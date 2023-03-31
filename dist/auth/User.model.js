@@ -13,17 +13,16 @@ exports.UserModel = exports.User = exports.UserRole = void 0;
 const typegoose_1 = require("@typegoose/typegoose");
 var UserRole;
 (function (UserRole) {
-    UserRole["ADMIN"] = "Admin";
-    UserRole["EMPLOYEE"] = "Employee";
-    UserRole["CUSTOMER"] = "Customer";
-    UserRole["SUPERADMIN"] = "SuperAdmin";
+    UserRole["HOD"] = "HOD";
+    UserRole["PROFESSOR"] = "PROFESSOR";
+    UserRole["STUDENT"] = "STUDENT";
 })(UserRole = exports.UserRole || (exports.UserRole = {}));
 class User {
 }
 __decorate([
     (0, typegoose_1.prop)({ trim: true }),
     __metadata("design:type", String)
-], User.prototype, "userName", void 0);
+], User.prototype, "name", void 0);
 __decorate([
     (0, typegoose_1.prop)(),
     __metadata("design:type", String)
@@ -49,7 +48,7 @@ __decorate([
     __metadata("design:type", Array)
 ], User.prototype, "fcmTokens", void 0);
 __decorate([
-    (0, typegoose_1.prop)({ enum: UserRole, default: UserRole.EMPLOYEE }),
+    (0, typegoose_1.prop)({ enum: UserRole, default: UserRole.STUDENT }),
     __metadata("design:type", String)
 ], User.prototype, "role", void 0);
 __decorate([
